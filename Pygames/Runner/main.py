@@ -46,7 +46,7 @@ while True:
     
     # Collision
     if snail_rect.colliderect(player_rect):
-        score_surf = test_font.render('You Lose!', False, (64, 64, 64))
+        score_surf = test_font.render('You Lose, Try again?', False, (64, 64, 64))
         score_rect = score_surf.get_rect(center = (400, 90))
 
     pygame.draw.rect(screen, '#c0e8ec', score_rect)
