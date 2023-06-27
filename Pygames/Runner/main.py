@@ -2,9 +2,6 @@ import pygame
 from sys import exit
 
 pygame.init()
-icon = pygame.image.load('icon.png')
-pygame.display.set_icon(icon)
-
 
 screen = pygame.display.set_mode((800, 400), pygame.RESIZABLE)
 pygame.display.set_caption('Beadie')
