@@ -1,6 +1,12 @@
 import pygame
 from sys import exit
 
+def display_score():
+    current_time = round(pygame.time.get_ticks() / 1000)
+    score_surf = test_font.render(f'{current_time}', False, (64, 64, 64))
+    score_rect = score_surf.get_rect(center = (400, 50))
+    screen.blit(score_surf, score_rect)
+
 pygame.init()
 
 screen = pygame.display.set_mode((800, 400), pygame.RESIZABLE)
@@ -13,7 +19,6 @@ game_active = True
 sky_surface = pygame.image.load('graphics/Sky.png').convert()
 ground_surface = pygame.image.load('graphics/ground.png').convert()
 
-
 snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
 snail_rect = snail_surf.get_rect(midbottom = (600, 300))
 
@@ -21,8 +26,8 @@ player_surf = pygame.image.load('graphics/Player/player_walk_1.png').convert_alp
 player_rect = player_surf.get_rect(midbottom = (80, 300))
 player_gravity = 0
 
-score_surf = test_font.render('Ang Pogi ko', False, (64, 64, 64))
-score_rect = score_surf.get_rect(center = (400, 90))
+# score_surf = test_font.render('Ang Pogi ko', False, (64, 64, 64))
+# score_rect = score_surf.get_rect(center = (400, 90))
 
 while True:
     for event in pygame.event.get():
@@ -41,8 +46,9 @@ while True:
 
     if game_active:       
         screen.blits([(sky_surface, (0, 0)), (ground_surface, (0, 300))])
-        pygame.draw.rect(screen, '#c0e8ec', score_rect)
-        screen.blit(score_surf, score_rect)
+        # pygame.draw.rect(screen, '#c0e8ec', score_rect)
+        # screen.blit(score_surf, score_rect)
+        display_score()
 
         snail_rect.left -= 6
         if snail_rect.left < -100: snail_rect.left = 800
