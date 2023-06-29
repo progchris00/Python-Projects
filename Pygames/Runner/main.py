@@ -17,7 +17,6 @@ end_font = pygame.font.Font("font/Pixeltype.ttf", 50)
 game_active = False
 start_time = 0
 
-
 sky_surface = pygame.image.load('graphics/Sky.png').convert()
 ground_surface = pygame.image.load('graphics/ground.png').convert()
 
@@ -29,9 +28,11 @@ snail_rect = snail_surf.get_rect(midbottom = (600, 300))
 player_surf = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
 player_rect = player_surf.get_rect(midbottom = (80, 300))
 player_gravity = 0
-player_stand = pygame.image.load('graphics/Player/player_stand.png')
+
+# Intro screen
+player_stand = pygame.image.load('graphics/Player/player_stand.png').convert_alpha()
 player_stand2x = pygame.transform.scale2x(player_stand)
-player_stand_rect = player_stand2x.get_rect(center = (400, 170))
+player_stand_rect = player_stand2x.get_rect(center = (400, 200))
 
 
 while True:
@@ -76,7 +77,6 @@ while True:
         screen.blit(player_stand2x, player_stand_rect)
         screen.blits([(bottom_message, (100, 300)), (top_message, (50, 0))])
 
-        # Fix position, color, font size
         
 
             
