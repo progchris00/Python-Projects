@@ -58,7 +58,7 @@ final_score = 0
 
 # Timer
 obstacle_timer = pygame.USEREVENT + 1
-pygame.time.set_timer(obstacle_timer, 900)
+pygame.time.set_timer(obstacle_timer, 1500)
 
 while True:
     for event in pygame.event.get():
@@ -112,3 +112,5 @@ while True:
             
     pygame.display.update()
     clock.tick(60)
+
+    # 2:35:47
