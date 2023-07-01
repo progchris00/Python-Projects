@@ -70,12 +70,23 @@ while True:
             game_active = False
     
     else:
+        final_score = display_score()
+
         screen.fill((94, 129, 162))
         top_message = test_font.render("Pixel Runner", False, "White")
+        top_message_rect = top_message.get_rect(center =(400, 80))
+
         bottom_message = end_font.render("Press space to start", False, "White")
+        bottom_message_rect = bottom_message.get_rect(center =(400, 330))
+
+        
+        score_message = end_font.render(f"Your final score is {final_score}", False, "White")
 
         screen.blit(player_stand2x, player_stand_rect)
-        screen.blits([(bottom_message, (100, 300)), (top_message, (50, 0))])        
+        screen.blits([(bottom_message, bottom_message_rect), (top_message, top_message_rect)])  
+
+        if final_score != None:
+            screen.blit(score_message, (50, 0))
 
             
     pygame.display.update()
