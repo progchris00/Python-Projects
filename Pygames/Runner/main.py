@@ -35,6 +35,14 @@ player_stand = pygame.image.load('graphics/Player/player_stand.png').convert_alp
 player_stand2x = pygame.transform.scale2x(player_stand)
 player_stand_rect = player_stand2x.get_rect(center = (400, 200))
 
+top_message = test_font.render("Pixel Runner", False, (111, 196, 169))
+top_message_rect = top_message.get_rect(center =(400, 80))
+
+bottom_message = end_font.render("Press space to start", False, (111, 196, 169))
+bottom_message_rect = bottom_message.get_rect(center =(400, 320))
+
+score_message = end_font.render(f"Your final score is {final_score}", False, "White")
+score_message_rect = score_message.get_rect(center = (400, 320))
 
 while True:
     for event in pygame.event.get():
@@ -71,23 +79,15 @@ while True:
             game_active = False
     
     else:
-        final_score = display_score()
-
         screen.fill((94, 129, 162))
-        top_message = test_font.render("Pixel Runner", False, (111, 196, 169))
-        top_message_rect = top_message.get_rect(center =(400, 80))
-
-        bottom_message = end_font.render("Press space to start", False, (111, 196, 169))
-        bottom_message_rect = bottom_message.get_rect(center =(400, 320))
-
-        
-        score_message = end_font.render(f"Your final score is {final_score}", False, "White")
-
         screen.blit(player_stand2x, player_stand_rect)
-        screen.blits([(bottom_message, bottom_message_rect), (top_message, top_message_rect)])  
+        screen.blit(top_message, top_message_rect)  
 
-        if final_score != None:
-            screen.blit(score_message, (50, 0))
+        if ...:
+            screen.blit(bottom_message, bottom_message_rect)
+        
+        else:
+            screen.blit(score_message, score_message_rect)
 
             
     pygame.display.update()
