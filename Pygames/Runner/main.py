@@ -111,8 +111,9 @@ while True:
         screen.fill((94, 129, 162))
         screen.blit(player_stand2x, player_stand_rect)
         screen.blit(top_message, top_message_rect)  
-        
+
         obstacle_rect_list.clear()
+        player_rect.midbottom = (80, 300)
 
         score_message = end_font.render(f"Your final score: {final_score}", False, (111, 196, 169))
         score_message_rect = score_message.get_rect(center = (400, 320))
