@@ -14,16 +14,20 @@ def obstacle_movement(obstacle_list):
         for obstacle_rect in obstacle_list:
             obstacle_rect.x -= 5
 
-            if obstacle_rect.bottom == 210:
-                screen.blit(fly_surf, obstacle_rect)
-            
-            else:
-                screen.blit(snail_surf, obstacle_rect)
+            if obstacle_rect.bottom == 210: screen.blit(fly_surf, obstacle_rect)
+            else: screen.blit(snail_surf, obstacle_rect)
             
         obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
 
         return obstacle_list
     else: return []
+
+def collisions(player, obstacles):
+    if obstacles:
+        for obstacle_rect in obstacles:
+            if player.colliderect(obstacle_rect): return False
+    return True
+
 
 pygame.init()
 screen = pygame.display.set_mode((800, 400), pygame.RESIZABLE)
@@ -101,19 +105,19 @@ while True:
         obstacle_rect_list = obstacle_movement(obstacle_rect_list)
         
         # Collision
-        # if snail_rect.colliderect(player_rect):
-        #     game_active = False
+        game_active = collisions(player_rect, obstacle_rect_list)
     
     else:
         screen.fill((94, 129, 162))
         screen.blit(player_stand2x, player_stand_rect)
         screen.blit(top_message, top_message_rect)  
+        
+        obstacle_rect_list.clear()
 
         score_message = end_font.render(f"Your final score: {final_score}", False, (111, 196, 169))
         score_message_rect = score_message.get_rect(center = (400, 320))
 
         if final_score == 0: screen.blit(bottom_message, bottom_message_rect)
-        
         else: screen.blit(score_message, score_message_rect)
 
 
