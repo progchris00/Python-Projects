@@ -70,7 +70,7 @@ while True:
             game_active = False
     
     else:
-        screen.fill('94, 129, 162')
+        screen.fill((94, 129, 162))
         top_message = test_font.render("Pixel Runner", False, "White")
         bottom_message = end_font.render("Press space to start", False, "White")
 
