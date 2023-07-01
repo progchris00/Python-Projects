@@ -6,6 +6,7 @@ def display_score():
     score_surf = test_font.render(f'Score: {current_time}', False, (64, 64, 64))
     score_rect = score_surf.get_rect(center = (400, 50))
     screen.blit(score_surf, score_rect)
+    return current_time
 
 
 pygame.init()
@@ -41,8 +42,7 @@ top_message_rect = top_message.get_rect(center =(400, 80))
 bottom_message = end_font.render("Press space to start", False, (111, 196, 169))
 bottom_message_rect = bottom_message.get_rect(center =(400, 320))
 
-score_message = end_font.render(f"Your final score is {final_score}", False, "White")
-score_message_rect = score_message.get_rect(center = (400, 320))
+final_score = 0
 
 while True:
     for event in pygame.event.get():
@@ -62,7 +62,7 @@ while True:
 
     if game_active:       
         screen.blits([(sky_surface, (0, 0)), (ground_surface, (0, 300))])
-        display_score()
+        final_score = display_score()
 
         snail_rect.left -= 6
         if snail_rect.left < -100: snail_rect.left = 800
@@ -83,11 +83,15 @@ while True:
         screen.blit(player_stand2x, player_stand_rect)
         screen.blit(top_message, top_message_rect)  
 
-        if ...:
+        score_message = end_font.render(f"Your final score is {final_score}", False, "White")
+        score_message_rect = score_message.get_rect(center = (400, 320))
+
+        if final_score == 0:
             screen.blit(bottom_message, bottom_message_rect)
         
         else:
             screen.blit(score_message, score_message_rect)
+
 
             
     pygame.display.update()
