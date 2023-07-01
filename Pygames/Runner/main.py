@@ -15,9 +15,10 @@ def obstacle_movement(obstacle_list):
             obstacle_rect.x -= 5
 
             screen.blit(snail_surf, obstacle_rect)
+            
+        obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -100]
 
         return obstacle_list
-    
     else: return []
 
 pygame.init()
