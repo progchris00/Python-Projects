@@ -27,6 +27,7 @@ snail_rect = snail_surf.get_rect(midbottom = (600, 300))
 
 player_surf = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
 player_rect = player_surf.get_rect(midbottom = (80, 300))
+
 player_gravity = 0
 
 # Intro screen
@@ -73,11 +74,11 @@ while True:
         final_score = display_score()
 
         screen.fill((94, 129, 162))
-        top_message = test_font.render("Pixel Runner", False, "White")
+        top_message = test_font.render("Pixel Runner", False, (111, 196, 169))
         top_message_rect = top_message.get_rect(center =(400, 80))
 
-        bottom_message = end_font.render("Press space to start", False, "White")
-        bottom_message_rect = bottom_message.get_rect(center =(400, 330))
+        bottom_message = end_font.render("Press space to start", False, (111, 196, 169))
+        bottom_message_rect = bottom_message.get_rect(center =(400, 320))
 
         
         score_message = end_font.render(f"Your final score is {final_score}", False, "White")
