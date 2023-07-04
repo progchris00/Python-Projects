@@ -31,10 +31,11 @@ def collisions(player, obstacles):
 def player_animation():
     global player_surf, player_index
 
-    if player_surf.bottom < 300:
+    if player_rect.bottom < 300:
         player_surf = player_jump
     else:
-        player_inex += 0.1
+        player_index += 0.1
+        if player_index >= len(player_walk): player_index = 0
         player_surf = player_walk[int(player_index)]
 
 pygame.init()
@@ -51,9 +52,19 @@ final_score = 0
 sky_surface = pygame.image.load('graphics/Sky.png').convert()
 ground_surface = pygame.image.load('graphics/ground.png').convert()
 
-# Obstacles
-snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
-fly_surf = pygame.image.load('graphics/Fly/Fly1.png').convert_alpha()
+# Style
+snail_frame_1 = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
+snail_frame_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
+snail_frames = [snail_frame_1, snail_frame_2]
+snail_frame_index = 0
+snail_surf = snail_frames[snail_frame_index]
+
+# Fly
+fly_frame1 = pygame.image.load('graphics/Fly/Fly1.png').convert_alpha()
+fly_frame2 = pygame.image.load('graphics/Fly/Fly1.png').convert_alpha()
+fly_frames = [fly_frame1, fly_frame2]
+fly_frame_index = 0
+fly_surf = fly_frames[fly_frame_index]
 
 obstacle_rect_list = []
 
@@ -81,6 +92,13 @@ bottom_message_rect = bottom_message.get_rect(center =(400, 320))
 # Timer
 obstacle_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(obstacle_timer, 1500)
+
+snail_animation_timer = pygame.USEREVENT + 2
+pygame.time.set_timer(snail_animation_timer, 500)
+
+fly_animation_timer = pygame.USEREVENT + 3
+pygame.time.set_timer(fly_animation_timer, 500)
+
 
 while True:
     for event in pygame.event.get():
