@@ -97,7 +97,7 @@ snail_animation_timer = pygame.USEREVENT + 2
 pygame.time.set_timer(snail_animation_timer, 500)
 
 fly_animation_timer = pygame.USEREVENT + 3
-pygame.time.set_timer(fly_animation_timer, 500)
+pygame.time.set_timer(fly_animation_timer, 200)
 
 
 while True:
@@ -116,12 +116,23 @@ while True:
                 # snail_rect.left = 800
                 start_time = round(pygame.time.get_ticks() / 1000)
         
-        if event.type == obstacle_timer and game_active:
-            if randint(0,2):
-                obstacle_rect_list.append(snail_surf.get_rect(midbottom = (randint(900, 1100), 300)))
+        if game_active:
+            if event.type == obstacle_timer:
+                if randint(0,2):
+                    obstacle_rect_list.append(snail_surf.get_rect(midbottom = (randint(900, 1100), 300)))
+                
+                else:
+                    obstacle_rect_list.append(fly_surf.get_rect(midbottom = (randint(900, 1100), 210)))
             
-            else:
-                obstacle_rect_list.append(fly_surf.get_rect(midbottom = (randint(900, 1100), 210)))
+            if event.type == snail_animation_timer:
+                if snail_frame_index == 0: snail_frame_index = 1
+                else: snail_frame_index = snail_frame_index = 0
+                snail_surf = snail_frames[snail_frame_index]
+
+            if event.type == fly_animation_timer:
+                if fly_frame_index == 0: fly_frame_index = 1
+                else: fly_frame_index = fly_frame_index = 0
+                fly_surf = fly_frames[fly_frame_index]
 
     if game_active:       
         screen.blits([(sky_surface, (0, 0)), (ground_surface, (0, 300))])
@@ -154,8 +165,6 @@ while True:
         if final_score == 0: screen.blit(bottom_message, bottom_message_rect)
         else: screen.blit(score_message, score_message_rect)
 
-
-            
     pygame.display.update()
     clock.tick(60)
 
