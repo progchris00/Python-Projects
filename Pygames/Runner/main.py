@@ -15,10 +15,13 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
         self.rect = self.image.get_rect(midbottom = (80, 300))
         self.gravity = 0
+
+        self.jump_sound = pygame.mixer.Sound('audio/jump.mp3')
     
     def player_input(self):
         if event.type == pygame.MOUSEBUTTONDOWN and self.rect.bottom >= 300:
             self.gravity = -20
+            self.jump_sound.play()
 
     def apply_gravity(self):
         self.gravity += 1
@@ -124,6 +127,8 @@ end_font = pygame.font.Font("font/Pixeltype.ttf", 50)
 game_active = False
 start_time = 0
 final_score = 0
+game_sound = pygame.mixer.Sound('audio/music.wav')
+game_sound.play(loops = -1)
 
 # Groups
 player = pygame.sprite.GroupSingle()
@@ -181,7 +186,6 @@ pygame.time.set_timer(snail_animation_timer, 500)
 
 fly_animation_timer = pygame.USEREVENT + 3
 pygame.time.set_timer(fly_animation_timer, 200)
-
 
 while True:
     for event in pygame.event.get():
