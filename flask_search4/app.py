@@ -16,12 +16,10 @@ def entry_page() -> 'html':
     return render_template('entry.html', 
                            the_title='Welcome to search4letters on the web!')
 
-# @app.route('/result')
-# def entry_page() -> 'html':
-#     return render_template('result.html', 
-#                            the_title='Welcome to search4letters on the web!',
-#                            the_phrase=phrase
-#                            the_letters=letters
-#                            the_result=)
+@app.route('/results')
+def result_page() -> 'html':
+    return render_template('results.html', 
+                           the_title='Welcome to search4letters on the web!',
+                           the_phrase=request.form['phrase'])
 
 app.run(debug=True)
