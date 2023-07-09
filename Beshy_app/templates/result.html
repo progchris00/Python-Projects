@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/beshyko'>
+<table>
+<p>Use this form to beshy a phrase</p>
+<tr><td>Phrase:</td><td>{{ the_phrase }}</td></tr>
+<tr><td>Result: </td><td>{{ the_result }}</td></tr>
+</table>
+<p>When you're ready, click this button:</p>
+<p><input value='Do it!' type='SUBMIT'></p>
+</form>
+
+{% endblock %}
