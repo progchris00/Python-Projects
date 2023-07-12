@@ -1,0 +1,6 @@
+besh.py
+setup.py
+besh.egg-info/PKG-INFO
+besh.egg-info/SOURCES.txt
+besh.egg-info/dependency_links.txt
+besh.egg-info/top_level.txt
