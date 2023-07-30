@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/result/meal'>
+<table>
+<p>Convert time to meal time</p>
+<tr><td>Time:</td><td><input name='time' type='text' pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" required placeholder="24 hour format"></td></tr>
+</table>
+<p><input value='Convert!' type='SUBMIT'></p>
+</form>
+
+{% endblock %}

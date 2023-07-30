@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/result/shirt'>
+<table>
+<p>Make your own CS50 shirt!</p>
+<tr><td>Name:</td><td><input name='text' type='text' size='10' required></td></tr>
+</table>
+<p><input value='Make!' type='SUBMIT'></p>
+</form>
+
+{% endblock %}
