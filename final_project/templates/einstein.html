@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/result/eins'>
+<table>
+<p>Convert mass to energy!</p>
+<tr><td>Mass:</td><td><input name='mass' type='number' size='10' required></td></tr>
+</table>
+<p><input value='Convert!' type='SUBMIT'></p>
+</form>
+
+{% endblock %}

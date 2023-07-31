@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ the_title }}</title>
+        <link rel="stylesheet" href="static/hf.css" />
+    </head>
+    <body>
+        <center><img src={{ url_for('static', filename='logo.png') }} style="width: 15%"></center>
+        {% block body %}
+
+        {% endblock %}
+    </body>
+</html>
