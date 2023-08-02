@@ -1,23 +1,26 @@
-{% extends 'base.html' %} {% block body %}
-<table>
-  <tr>
-    <td>Email Address</td>
-    <td><input type="text" name="" id="" required /></td>
-  </tr>
-  <tr>
-    <td>First Name</td>
-    <td><input type="text" name="" id="" required /></td>
-  </tr>
-  <tr>
-    <td>Passowrd</td>
-    <td><input type="text" name="" id="" required /></td>
-  </tr>
-  <tr>
-    <td>Passowrd (confirm)</td>
-    <td><input type="text" name="" id="" required /></td>
-  </tr>
-</table>
-
-<button>Submit</button>
-
+{% extends 'base.html' %} {% block title %} Sign Up {% endblock %} {%block
+body%}
+<form action="/home" method="post">
+  <table>
+    <tr>
+      <td>Email Address</td>
+      <td><input type="text" name="email" id="" required /></td>
+    </tr>
+    <tr>
+      <td>First Name</td>
+      <td><input type="text" name="name" id="" required /></td>
+    </tr>
+    <tr>
+      <td>Passowrd</td>
+      <td><input type="text" name="pass1" id="" required /></td>
+    </tr>
+    <tr>
+      <td>Passowrd (confirm)</td>
+      <td><input type="text" name="pass2" id="" required /></td>
+    </tr>
+  </table>
+  {% if pass1 == pass2 %}
+  <input value="Pass!" type="SUBMIT" />
+  {% endif %}
+</form>
 {% endblock %}
