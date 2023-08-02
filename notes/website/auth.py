@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 auth = Blueprint('auth', __name__)
 
@@ -13,4 +13,10 @@ def signup_page() -> 'html':
 
 @auth.route('/home', methods=['POST'])
 def home_page() -> 'html':
-    return render_template('home.html')
+    name = request.form['firstname']
+    email = request.form['email']
+    password = request.form['password1']
+    return render_template('home.html',
+                           the_name=name,
+                           the_email=email,
+                           the_password=password)
