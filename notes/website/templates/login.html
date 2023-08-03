@@ -1,16 +1,29 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} {% block title %} Log In {% endblock %} {% block
+body%}
 
-<table>
-  <tr>
-    <td>Email Address</td>
-    <td><input type="text" name="" id="" /></td>
-  </tr>
-  <tr>
-    <td>Password</td>
-    <td><input type="text" name="" id="" /></td>
-  </tr>
-</table>
-
-<button>Submit</button>
+<form action="/home" method="post">
+  <h3 align="center">Log In</h3>
+  <div class="form-group">
+    <label for="email"> Email Address </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="form-control"
+      placeholder="Enter email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password"> Password </label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      class="form-control"
+      placeholder="Enter password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Log In</button>
+</form>
 
 {% endblock %}
