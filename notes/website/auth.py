@@ -16,10 +16,10 @@ def home_page():
 
         if len(email.split('@')[0]) < 3:
             flash("Username must be 3 characters long", category='error')
-        elif len(name) < 3:
+        if len(name) < 3:
             flash("Name must be 3 characters long.", category='error')
-        elif password1 != password2:
-            flash("Password do not match", category='error')
+        if password1 != password2:
+            flash("Passwords do not match", category='error')
         else:
             flash("Account succesfully created!")
 

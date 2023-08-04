@@ -38,22 +38,22 @@
       </div>
     </nav>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages[1]=='error' %} {% for message in messages %}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% for
+    message in messages %}{% if message[0]=='error' %}
     <div class="alert alert-danger alert-dismissable fade show" role="alert">
-      {{ message }}
+      {{ message[1] }}
       <button class="close" type="button" data-dismiss="alert">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    {% endfor %} {% else %} {% for message in messages %}
+    {% else %}
     <div class="alert alert-success alert-dismissable fade show" role="alert">
-      {{ message }}
+      {{ message[1] }}
       <button class="close" type="button" data-dismiss="alert">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    {% endfor %} {%endif%} {% endwith %}
+    {% endif %} {% endfor %} {% endwith %}
 
     <div class="container">{% block body %} {% endblock %}</div>
     <script
