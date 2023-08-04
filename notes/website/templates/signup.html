@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %} Sign Up {% endblock %} {%block
 body%}
-<form method="post" action="/home">
+<form method="post">
   <h3 align="center">Sign Up</h3>
   <div class="form-group">
     <label for="email"> Email Address </label>
@@ -10,6 +10,7 @@ body%}
       id="email"
       name="email"
       placeholder="Enter email"
+      required
     />
     <div id="passwordHelpBlock" class="form-text">
       We'll never share your email with anyone else.
@@ -23,6 +24,7 @@ body%}
       id="firstname"
       name="firstname"
       placeholder="Enter first name"
+      required
     />
   </div>
   <div class="form-group">
@@ -33,6 +35,7 @@ body%}
       id="password1"
       name="password1"
       placeholder="Enter Password"
+      required
     />
   </div>
   <div class="form-group">
@@ -43,6 +46,7 @@ body%}
       id="password2"
       name="password2"
       placeholder="Password"
+      required
     />
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

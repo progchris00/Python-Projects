@@ -1,22 +1,26 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
-def login_page() -> 'html':
+def login_page():
     return render_template('login.html')
 
-@auth.route('/sign-up')
-def signup_page() -> 'html':
-    return render_template('signup.html',
-                            the_title = "Testing")
+@auth.route('/signup', methods=['Get', 'POST'])
+def home_page():
+    if request.method == 'POST':
+        name = request.form.get('firstname')
+        email = request.form.get('email')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
 
-@auth.route('/home', methods=['POST'])
-def home_page() -> 'html':
-    name = request.form['firstname']
-    email = request.form['email']
-    password = request.form['password1']
-    return render_template('home.html',
-                           the_name=name,
-                           the_email=email,
-                           the_password=password)
+        if len(email.split('@')[0]) < 3:
+            flash("Username must be 3 characters long", category='error')
+        elif len(name) < 3:
+            flash("Name must be 3 characters long.", category='error')
+        elif password1 != password2:
+            flash("Password do not match", category='error')
+        else:
+            flash("Account succesfully created!")
+
+    return render_template('signup.html')
