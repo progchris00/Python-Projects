@@ -5,8 +5,21 @@ from . import db
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/login')
+@auth.route('/login', methods=['GET', 'POST'])
 def login_page():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(email=email).first()
+        if user: 
+            if check_password_hash(user.password, password):
+                flash("Logged in successfully!", category='success')
+            else:
+                flash("Incorrect password", category='error')
+        else:
+            flash("Email does not exists", category='error')
+
     return render_template('login.html')
 
 @auth.route('/signup', methods=['Get', 'POST'])
