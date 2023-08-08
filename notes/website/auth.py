@@ -15,6 +15,7 @@ def login_page():
         if user: 
             if check_password_hash(user.password, password):
                 flash("Logged in successfully!", category='success')
+                return redirect(url_for('views.home'))
             else:
                 flash("Incorrect password", category='error')
         else:
@@ -34,11 +35,11 @@ def sign_up():
         if user:
             flash('Email already exists', category='error')
 
-        if len(email.split('@')[0]) < 3:
+        elif len(email.split('@')[0]) < 3:
             flash("Username must be 3 characters long", category='error')
-        if len(name) < 3:
+        elif len(name) < 3:
             flash("Name must be 3 characters long.", category='error')
-        if password1 != password2:
+        elif password1 != password2:
             flash("Passwords do not match", category='error')
         else:
             new_user = User(email=email, first_name=name, password=generate_password_hash(password1, method='sha256'))
