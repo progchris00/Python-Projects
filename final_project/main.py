@@ -5,23 +5,6 @@ app = create_app()
 if __name__ == '__main__':
     app.run(debug=True)
 
-# from flask import Flask, render_template, request, url_for
-# import ortiz as ort
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# @app.route('/start')
-# def entry_page() -> 'html':
-#     return render_template('entry.html',
-#                            the_title='CS50P Final Project')
-
-
-# @app.route('/einstein')
-# def einstein() -> 'html':
-#     return render_template('einstein.html')
-
-
 # @app.route('/meal')
 # def meal_time() -> 'html':
 #     return render_template('meal.html')

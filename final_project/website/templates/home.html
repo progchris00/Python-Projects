@@ -1,15 +1,73 @@
 {% extends 'base.html' %} {% block body %}
 
-<h2>{{ the_title }}</h2>
+<div align="center">List of projects:</div>
 
-<p>
-  This project is a compilation of my favorite problem sets from the CS50P
-  itself but in website!
-</p>
-<p>List of problem sets:</p>
-<li><a href="einstein">Einstein (Week 0)</a></li>
-<li><a href="meal">Meal (Week 1) </a></li>
-<li><a href="figlet">Figlet (Week 4)</a></li>
-<li><a href="shirtificate">Shirtificate (Week 8)</a></li>
+<div class="row justify-content-center">
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow text-center" style="width: 15rem">
+      <div class="inner">
+        <a href="#" target="_blank"
+          ><img
+            src="{{ url_for('static', filename='albert.jpg') }}"
+            class="card-img-top"
+            alt="..."
+        /></a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Einstein</h5>
+        <p class="card-text">Convert mass to energy</p>
+        <a href="einstein" class="btn btn-primary">Go to pset!</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow text-center" style="width: 15rem">
+      <div class="inner">
+        <img
+          src="{{ url_for('static', filename='ascii.png') }}"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Figlet</h5>
+        <p class="card-text">Turn text to ascii art</p>
+        <a href="#" class="btn btn-primary">Go to pset!</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow text-center" style="width: 15rem">
+      <div class="inner">
+        <img
+          src="{{ url_for('static', filename='meal.jpg') }}"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Meal</h5>
+        <p class="card-text">Check meal time is it</p>
+        <a href="#" class="btn btn-primary">Go to pset!</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow text-center" style="width: 15rem">
+      <div class="inner">
+        <img
+          src="{{ url_for('static', filename='shirt.png') }}"
+          class="card-img-top"
+          alt="..."
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Shirtificate</h5>
+        <p class="card-text">Make your own CS50 shirtificate</p>
+        <a href="#" class="btn btn-primary">Go to pset!</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
