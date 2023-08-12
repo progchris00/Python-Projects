@@ -1,13 +1,17 @@
-{% extends 'base.html' %}
-
-{% block body %}
+{% extends 'base.html' %} {% block body %}
 
 <h2>{{ the_title }}</h2>
 
 <table>
-<p>Convert mass to energy!</p>
-<tr><td>Mass: </td><td>{{ the_mass }}</td></tr>
-<tr><td>Energy: </td><td>{{ the_result }}</td></tr>
+  <p>Convert mass to energy!</p>
+  <tr>
+    <td>Mass:</td>
+    <td>{{ mass }}</td>
+  </tr>
+  <tr>
+    <td>Energy:</td>
+    <td>{{ result }}</td>
+  </tr>
 </table>
 
 {% endblock %}
