@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 
 def create_app():
     app = Flask(__name__)
@@ -52,4 +52,5 @@ def shirtify(name):
     pdf.set_font_size(30)
     pdf.set_text_color(255,255,255)
     pdf.text(x=center_x, y=130, txt=phrase)
-    pdf.output(f"static/shirtificate.pdf")
+    pdf.output="{{ url_for('static', filename='logo.png') }}"
+    #save to static

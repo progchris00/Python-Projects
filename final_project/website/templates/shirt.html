@@ -1,15 +1,18 @@
-{% extends 'base.html' %}
-
-{% block body %}
-
-<h2>{{ the_title }}</h2>
-
-<form method='POST' action='/result/shirt'>
-<table>
-<p>Make your own CS50 shirt!</p>
-<tr><td>Name:</td><td><input name='text' type='text' size='10' required></td></tr>
-</table>
-<p><input value='Make!' type='SUBMIT'></p>
+{% extends 'base.html' %} {% block body %}
+<form method="POST">
+  <div class="form-group">
+    <label for="Text"> Text </label>
+    <input
+      type="text"
+      id="text"
+      name="text"
+      class="form-control"
+      placeholder="Enter text to put"
+    />
+  </div>
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Make!</button>
+  </div>
 </form>
 
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block body %}
+
+<h2>{{ title }}</h2>
+
+<table>
+  <tr>
+    <td>Input:</td>
+    <td>{{ the_input }}</td>
+  </tr>
+  <tr>
+    <td>Result:</td>
+    {% if title == 'Figlet' %}
+    <td><pre>{{ the_result }}</pre></td>
+    {% elif title == 'Shirtificate' %}
+    <td>
+      <iframe
+        src="{{ url_for('static', filename='shirtificate.pdf') }}"
+        width="600"
+        height="800"
+      ></iframe>
+    </td>
+    {% else %}
+    <td>{{ the_result }}</td>
+    {% endif %}
+  </tr>
+</table>
+
+{% endblock %}
