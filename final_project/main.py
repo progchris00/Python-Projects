@@ -5,21 +5,6 @@ app = create_app()
 if __name__ == '__main__':
     app.run(debug=True)
 
-# @app.route('/meal')
-# def meal_time() -> 'html':
-#     return render_template('meal.html')
-
-
-# @app.route('/figlet')
-# def figlet() -> 'html':
-#     return render_template('figlet.html')
-
-
-# @app.route('/shirtificate')
-# def shirt() -> 'html':
-#     return render_template('shirt.html')
-
-
 # @app.route('/result/eins', methods=['POST'])
 # def result_eins() -> 'html':
 #     mass = request.form['mass']

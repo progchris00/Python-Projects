@@ -1,15 +1,18 @@
-{% extends 'base.html' %}
-
-{% block body %}
-
-<h2>{{ the_title }}</h2>
-
-<form method='POST' action='/result/fig'>
-<table>
-<p>Convert text to ASCII art!</p>
-<tr><td>Text:</td><td><input name='text' type='text' size='10' required></td></tr>
-</table>
-<p><input value='Convert!' type='SUBMIT'></p>
+{% extends 'base.html' %} {% block body %}
+<form method="POST">
+  <div class="form-group">
+    <label for="Text"> Text </label>
+    <input
+      type="text"
+      id="text"
+      name="text"
+      class="form-control"
+      placeholder="Enter text to convert"
+    />
+  </div>
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Convert</button>
+  </div>
 </form>
 
 {% endblock %}
