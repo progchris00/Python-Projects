@@ -53,4 +53,3 @@ def shirtify(name):
     pdf.set_text_color(255,255,255)
     pdf.text(x=center_x, y=130, txt=phrase)
     pdf.output('website/static/shirtificate.pdf')
-    #save to static
