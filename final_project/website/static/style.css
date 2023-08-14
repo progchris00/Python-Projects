@@ -3,10 +3,12 @@
 }
 
 nav {
-  background-color: #a91723;
+  background-color: #7d1235;
 }
 
 .btn {
   color: white;
-  background-color: #a91723;
+  /* below hover */
+  /* background-color: #a91723; */
+  background-color: #7d1235;
 }

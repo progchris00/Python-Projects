@@ -10,9 +10,13 @@ def home():
 @views.route('/einstein', methods=['GET','POST'])
 def einstein():
     if request.method == 'POST':
-        the_input = request.form.get('mass')
-        the_result = cal_energy(int(the_input))
-        return render_template('results.html', title='Einstein', the_input=the_input, the_result=the_result)
+        try: 
+            the_input = request.form.get('mass')
+            the_result = cal_energy(int(the_input))
+            return render_template('results.html', title='Einstein', the_input=the_input, the_result=the_result)
+
+        except ValueError:
+            flash("Input required", category='error')
 
     return render_template('einstein.html')
 

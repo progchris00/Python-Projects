@@ -37,6 +37,22 @@
         </div>
       </div>
     </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% for
+    message in messages %}{% if message[0]=='error' %}
+    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+      {{ message[1] }}
+      <button class="close" type="button" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+      {{ message[1] }}
+      <button class="close" type="button" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endwith %}
     <br />
     <div align="center">
       <img
@@ -45,7 +61,6 @@
       />
     </div>
     <br />
-
     <div class="container">{% block body %} {% endblock %}</div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
