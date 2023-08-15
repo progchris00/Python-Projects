@@ -37,6 +37,7 @@
         </div>
       </div>
     </nav>
+
     {% with messages = get_flashed_messages(with_categories=true) %} {% for
     message in messages %}{% if message[0]=='error' %}
     <div class="alert alert-danger alert-dismissable fade show" role="alert">
@@ -53,6 +54,7 @@
       </button>
     </div>
     {% endif %} {% endfor %} {% endwith %}
+
     <br />
     <div align="center">
       <img
