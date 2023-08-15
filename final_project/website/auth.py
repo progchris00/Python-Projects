@@ -33,7 +33,7 @@ def login_page():
         else:
             flash('No account associated with this email', category='error')
         
-    return redirect('login.html', user=current_user)
+    return render_template('login.html', user=current_user)
 
 @auth.route('/logout')
 @login_required
