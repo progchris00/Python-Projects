@@ -70,6 +70,6 @@ def sign_up():
             return redirect(url_for('views.home'))
 
 # if method is get and not post, render signup template
-    return render_template('signup.html')
+    return render_template('signup.html', user=current_user)
 
 #then login that user and redirect to views.home
