@@ -53,3 +53,8 @@ def shirt():
     
     return render_template('shirt.html', user=current_user)
 
+@views.route('/profile', methods=['GET','POST'])
+@login_required
+def profile():
+    return render_template('profile.html', user=current_user)
+
