@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from flask_login import login_required, current_user  
+from .models import User
 from . import *
 
 views = Blueprint('views', __name__)
@@ -56,5 +57,25 @@ def shirt():
 @views.route('/profile', methods=['GET','POST'])
 @login_required
 def profile():
+    if request.method == 'POST':
+        return redirect(url_for('views.update'))
+    
     return render_template('profile.html', user=current_user)
 
+
+@views.route('/update', methods=['GET','POST'])
+@login_required
+def update():
+    if request.method == 'POST':
+        first_name = request.form.get('first_name')
+        email = request.form.get('email')
+
+        user = User.query.get(current_user.id)
+        user.first_name = first_name
+        user.email = email
+        db.session.commit()
+
+        flash('Updated succesfully!')
+        return redirect(url_for('views.profile'))
+
+    return render_template("update.html", user=current_user)

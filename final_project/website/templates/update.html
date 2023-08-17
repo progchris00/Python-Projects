@@ -4,13 +4,15 @@
   <table>
     <tr>
       <td>Name:</td>
-      <td>{{user.first_name}}</td>
+      <td>
+        <input name="first_name" type="text" value="{{user.first_name}}" />
+      </td>
     </tr>
     <tr>
       <td>Email:</td>
-      <td>{{user.email}}</td>
+      <td><input name="email" type="text" value="{{user.email}}" /></td>
     </tr>
   </table>
-  <button class="btn">Edit</button>
+  <button class="btn">Update</button>
 </form>
 {% endblock %}
