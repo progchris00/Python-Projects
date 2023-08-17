@@ -44,7 +44,12 @@ def logout():
 
 @auth.route('/signup', methods=['Get', 'POST'])
 def sign_up():
+    return render_template('signup.html')
 #if method is post get required attributes
+    # if request.method == 'Post':
+    #     email = request.form.get('email')
+    #     email = request.form.get('email')
+    #     email = request.form.get('email')
 #make a user instance then filter it
 #check if there is already an account associated with that email, flash message
 #checks the input for len, name length and if password 1 and 2 match
