@@ -1,11 +1,11 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
 from flask_login import login_required, current_user  
-from .models import User
+from .models import User, Comments
 from . import *
 
 views = Blueprint('views', __name__)
 
-@views.route('/')
+@views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
     return render_template('home.html', user=current_user)
@@ -13,6 +13,7 @@ def home():
 @views.route('/einstein', methods=['GET','POST'])
 @login_required
 def einstein():
+    all_comments = Comments.query.all()
     if request.method == 'POST':
         try: 
             the_input = request.form.get('mass')
@@ -22,7 +23,7 @@ def einstein():
         except ValueError:
             flash("Input required", category='error')
 
-    return render_template('einstein.html', user=current_user)
+    return render_template('einstein.html', user=current_user, all_comments=all_comments)
 
 @views.route('/figlet', methods=['GET','POST'])
 @login_required

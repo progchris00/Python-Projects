@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block body %}
 <h2>Einstein</h2>
-<form method="POST">
+<form method="POST" action="/einstein">
   <div class="form-group">
     <label for="mass"> Mass </label>
     <input
@@ -13,6 +13,25 @@
   </div>
   <div align="center">
     <button type="submit" class="btn">Convert</button>
+  </div>
+</form>
+
+<h4>Comments</h4>
+<ul class="list-group list-group-flush" id="comments">
+  {% for comment in all_comments %} from {{comment.user.first_name}}
+  <li class="list-group-item">
+    {{ comment.data }}
+    <button type="button" class="close" onclick="deleteNote({{ comment.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST" action="/einstein">
+  <textarea name="comment" id="comment" class="form-control"></textarea>
+  <div align="center">
+    <br />
+    <button type="submit" class="btn">Add comment</button>
   </div>
 </form>
 
