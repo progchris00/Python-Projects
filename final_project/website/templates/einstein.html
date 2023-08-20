@@ -18,7 +18,8 @@
 
 <h4>Comments</h4>
 <ul class="list-group list-group-flush" id="comments">
-  {% for comment in all_comments %} from {{comment.user.first_name}}
+  {% for comment in all_comments %} from {{comment.user.first_name}} send at {{
+  comment.date}}
   <li class="list-group-item">
     {{ comment.data }}
     <button type="button" class="close" onclick="deleteNote({{ comment.id }})">

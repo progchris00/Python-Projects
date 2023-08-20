@@ -7,7 +7,7 @@ class Comments(db.Model):
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User")
+    user = db.relationship("User") #Understand this
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,4 +16,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     comments = db.relationship('Comments')
 
+
+#To do: review code in einstein
+#Issue: can't submit new comment, make comments specific to each website.
     
