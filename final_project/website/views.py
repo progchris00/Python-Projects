@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user  
 from .models import User, Comments
-from . import db
+from . import *
 import json
 
 views = Blueprint('views', __name__)
@@ -11,24 +11,20 @@ views = Blueprint('views', __name__)
 def home():
     return render_template('home.html', user=current_user)
 
-@views.route('/einstein', methods=['GET','POST'])
+
+@views.route('/einstein', methods=['GET', 'POST'])
 @login_required
 def einstein():
-    if request.method == 'POST':
-        # try: 
-        #     the_input = request.form.get('mass')
-        #     the_result = cal_energy(int(the_input))
-        #     return render_template('results.html', title='Einstein', the_input=the_input, the_result=the_result, user=current_user)
-
-        # except ValueError:
-        #     flash("Input required", category='error')
-        comment = request.form.get('comment')
-        new_comment = Comments(data=comment, user_id=current_user.id,)
-        db.session.add(new_comment)
-        db.session.commit()
-        flash("Comment added!", category='success')
-    
     all_comments = Comments.query.all()
+    if request.method == 'POST':
+        try: 
+            the_input = request.form.get('mass')
+            the_result = cal_energy(int(the_input))
+            return render_template('results.html', title='Einstein', the_input=the_input, the_result=the_result, user=current_user)
+
+        except ValueError:
+            flash("Input required", category='error')
+    
     return render_template('einstein.html', user=current_user, all_comments=all_comments)
 
 
@@ -42,6 +38,7 @@ def figlet():
     
     return render_template('figlet.html', user=current_user)
 
+
 @views.route('/meal', methods=['GET','POST'])
 @login_required
 def meal():
@@ -52,6 +49,7 @@ def meal():
     
     return render_template('meal.html', user=current_user)
 
+
 @views.route('/shirtificate', methods=['GET','POST'])
 @login_required
 def shirt():
@@ -61,6 +59,7 @@ def shirt():
         return render_template('results.html', title='Shirtificate', the_input=the_input, the_result=the_result, user=current_user)
     
     return render_template('shirt.html', user=current_user)
+
 
 @views.route('/profile', methods=['GET','POST'])
 @login_required
@@ -88,6 +87,7 @@ def update():
 
     return render_template("update.html", user=current_user)
 
+
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
     note = json.loads(request.data)
@@ -99,3 +99,17 @@ def delete_note():
             db.session.commit()
             
     return jsonify({})
+
+
+@views.route('/einstein-comments', methods=['GET','POST'])
+@login_required
+def add_comments():
+    if request.method == 'POST':
+        comment = request.form.get('comment')
+        new_comment = Comments(data=comment, user_id=current_user.id,)
+        db.session.add(new_comment)
+        db.session.commit()
+        flash("Comment added!", category='success')
+    
+    all_comments = Comments.query.all()
+    return render_template('einstein.html', user=current_user, all_comments=all_comments)
