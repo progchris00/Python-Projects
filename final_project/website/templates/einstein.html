@@ -21,10 +21,11 @@
   {% for comment in all_comments %} from {{comment.user.first_name}} - {{
   comment.date}}
   <li class="list-group-item">
-    {{ comment.data }}
+    {{ comment.data }} {% if user.id == comment.user.id %}
     <button type="button" class="close" onclick="deleteNote({{ comment.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>

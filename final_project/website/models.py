@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     comments = db.relationship('Comments')
 
 
-#To do: review code in einstein
-#Issue: can't submit new comment, make comments specific to each website.
+#To do: make two seperate submit button. 
+#Fixed comment addition 
+#Commented codes in einstein
     
