@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user  
 from .models import User, Comments
-from . import *
+from . import db
+import json
 
 views = Blueprint('views', __name__)
 
@@ -13,17 +14,23 @@ def home():
 @views.route('/einstein', methods=['GET','POST'])
 @login_required
 def einstein():
-    all_comments = Comments.query.all()
     if request.method == 'POST':
-        try: 
-            the_input = request.form.get('mass')
-            the_result = cal_energy(int(the_input))
-            return render_template('results.html', title='Einstein', the_input=the_input, the_result=the_result, user=current_user)
+        # try: 
+        #     the_input = request.form.get('mass')
+        #     the_result = cal_energy(int(the_input))
+        #     return render_template('results.html', title='Einstein', the_input=the_input, the_result=the_result, user=current_user)
 
-        except ValueError:
-            flash("Input required", category='error')
-
+        # except ValueError:
+        #     flash("Input required", category='error')
+        comment = request.form.get('comment')
+        new_comment = Comments(data=comment, user_id=current_user.id,)
+        db.session.add(new_comment)
+        db.session.commit()
+        flash("Comment added!", category='success')
+    
+    all_comments = Comments.query.all()
     return render_template('einstein.html', user=current_user, all_comments=all_comments)
+
 
 @views.route('/figlet', methods=['GET','POST'])
 @login_required
@@ -80,3 +87,15 @@ def update():
         return redirect(url_for('views.profile'))
 
     return render_template("update.html", user=current_user)
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Comments.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+            
+    return jsonify({})
