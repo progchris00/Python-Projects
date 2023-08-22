@@ -8,7 +8,40 @@ nav {
 
 .btn {
   color: white;
-  /* below hover */
-  /* background-color: #a91723; */
   background-color: #7d1235;
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.user-info {
+  font-weight: bold;
+}
+
+.comment-text {
+  margin-top: 5px;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+}
+
+.close {
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.comment-date {
+  font-size: 12px;
 }
