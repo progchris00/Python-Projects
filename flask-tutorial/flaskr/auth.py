@@ -48,10 +48,10 @@ def login():
         error = None
         user = db.execute(
             'SELECT * FROM USER WHERE username = ?', (username,)
-        ).fetchnone()
+        ).fetchone()
 
         if user is None:
-            error = 'Incorrect username.'
+            error = 'Username not found.'
         elif not check_password_hash(user['password'], password):
             error = 'Incorrect password.'
         
